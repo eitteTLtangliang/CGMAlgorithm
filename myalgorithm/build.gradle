@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.library'
+}
+
+def SDK_BASENAME = "CGMAlgorithmSDK"
+def SDK_VERSION = "_v1.0"
+def sdkDestinationPath = "build/outputs/jar/"
+def zipFile = file('build/intermediates/packaged-classes/release/classes.jar')
+//build/intermediates/packaged-classes/debug/classes.jar
+task deleteBuild(type: Delete) {
+    delete sdkDestinationPath + SDK_BASENAME + SDK_VERSION + ".jar"
+}
+task makeJar(type: Jar) {
+    from zipTree(zipFile)
+    baseName = SDK_BASENAME + SDK_VERSION
+    destinationDir = file(sdkDestinationPath)
+}
+makeJar.dependsOn(deleteBuild, build)
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-frtti"
+            }
+        }
+
+        ndk {
+            abiFilters /*'armeabi' ,*/  'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <paths>
+        <!--&lt;!&ndash;物理路径为Context.getFilesDir() + /files/*&ndash;&gt;
+        <files-path path="files" name="files" />
+
+        &lt;!&ndash;物理路径为Context.getCacheDir() + /files/*&ndash;&gt;
+        <cache-path path="files" name="cache" />
+
+        &lt;!&ndash;物理路径为Environment.getExternalStorageDirectory() + /files/*&ndash;&gt;
+        <external-path path="files" name="external" />-->
+
+        <external-path path="SiSensingCGM" name="external" />
+
+       <!-- &lt;!&ndash;物理路径为Context.getExternalFilesDir(String) + /files/*&ndash;&gt;
+        <external-files-path path="files" name="externalfiles"/>
+        &lt;!&ndash; 此标签需要 support 25.0.0以上才可以使用&ndash;&gt;
+        <external-cache-path  path="files" name="externalcache"/>-->
+
+        <!-- /storage/emulated/0/Download/${applicationId}/.beta/apk-->
+        <external-path name="beta_external_path" path="Download/"/>
+        <!--/storage/emulated/0/Android/data/${applicationId}/files/apk/-->
+        <external-path name="beta_external_files_path" path="Android/data/"/>
+    </paths>
+</resources>
