@@ -5,6 +5,8 @@ plugins {
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.eitteTLtangliang'
 
+/*
+
 def SDK_BASENAME = "CGMAlgorithmSDK"
 def SDK_VERSION = "_v1.0"
 def sdkDestinationPath = "build/outputs/jar/"
@@ -19,6 +21,8 @@ task makeJar(type: Jar) {
     destinationDir = file(sdkDestinationPath)
 }
 makeJar.dependsOn(deleteBuild, build)
+
+*/
 
 android {
     compileSdkVersion 30
@@ -70,7 +74,6 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
-    testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
