@@ -2,6 +2,9 @@ plugins {
     id 'com.android.library'
 }
 
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.eitteTLtangliang'
+
 def SDK_BASENAME = "CGMAlgorithmSDK"
 def SDK_VERSION = "_v1.0"
 def sdkDestinationPath = "build/outputs/jar/"
